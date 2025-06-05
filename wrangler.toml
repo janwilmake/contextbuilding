@@ -1,0 +1,28 @@
+name = "contextbuilding2"
+main = "main.ts"
+compatibility_date = "2025-06-05"
+
+dev.port = 3000
+routes = [
+  { pattern = "contextbuilding.com", custom_domain = true },
+  { pattern = "www.contextbuilding.com", custom_domain = true }
+]
+
+[[durable_objects.bindings]]
+name = "CONTEXT_DO"
+class_name = "ContextDO"
+
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ContextDO"]
+
+
+# Add your GitHub OAuth credentials as secrets:
+# wrangler secret put GITHUB_CLIENT_ID
+# wrangler secret put GITHUB_CLIENT_SECRET
+
+# Set up your domain and ensure the GitHub OAuth app
+# uses this domain with /callback as the callback URL
+# route = "worddo.yourdomain.com"
